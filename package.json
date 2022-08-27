@@ -1,0 +1,33 @@
+{
+  "name": "syslog-viewer-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.2.6",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "dayjs": "^1.11.5",
+    "framer-motion": "^6.5.1",
+    "lodash": "^4.17.21",
+    "mariadb": "^3.0.1",
+    "moment": "^2.29.4",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-virtuoso": "^2.16.6",
+    "search-array": "^1.6.0",
+    "simple-syslog-server": "^1.0.0",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
+  },
+  "devDependencies": {
+    "eslint": "8.21.0",
+    "eslint-config-next": "12.2.5"
+  }
+}
