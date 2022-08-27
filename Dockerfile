@@ -15,5 +15,6 @@ COPY styles ./styles
 COPY next.config.js ./
 COPY server.js ./
 RUN npm install && npm run build
+EXPOSE 514
 EXPOSE 3000
 ENTRYPOINT [ "node", "server.js" ]
