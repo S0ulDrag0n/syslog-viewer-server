@@ -18,7 +18,7 @@ export default function Home() {
       return;
     }
 
-    const ws = new io(`ws://localhost:${3000}`);
+    const ws = new io(`ws://${location.host}`);
 
     ws.on(LogEvents.GET_ALL_LOGS, serverLogs => setLogs([...serverLogs]));
     ws.on(LogEvents.SEARCH_LOGS, serverLogs => setLogs([...serverLogs]));
