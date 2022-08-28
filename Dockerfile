@@ -1,4 +1,4 @@
-FROM node:current-alpine
+FROM node:buster-slim
 
 ENV NODE_ENV=production
 ENV MYSQL_ROOT_PASSWORD=syslog
