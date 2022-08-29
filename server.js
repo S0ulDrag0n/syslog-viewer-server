@@ -40,18 +40,22 @@ app.prepare().then(async () => {
         await handle(req, res, parsedUrl);
       }
     } catch (err) {
-      logger.error('Server', 'Error occurred handling', req.url, err)
+      logger.error('Server', 'Error occurred handling', req.url, err);
       res.statusCode = 500;
       res.end('internal server error');
     }
   }).listen(port, (err) => {
     if (err) throw err
-    logger.log('Server', `Ready on http://${hostname}:${port}`)
+    logger.log('Server', `Ready on http://${hostname}:${port}`);
   });
 
   await dbInitTask;
 
-  const io = new Server(httpServer);
+  const io = new Server(httpServer, {
+    cors: {
+      origin: process.env.SOCKET_CORS,
+    },
+  });
 
   io.on('connection', socket => {
     syslogManager.on('msg', async log => {
