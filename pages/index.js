@@ -18,16 +18,18 @@ export default function Home() {
       return;
     }
 
-    const ws = new io(`ws://${location.host}`);
+    fetch('/api/socket').then(() => {
+      const ws = new io();
 
-    ws.on(LogEvents.GET_ALL_LOGS, serverLogs => setLogs([...serverLogs]));
-    ws.on(LogEvents.SEARCH_LOGS, serverLogs => setLogs([...serverLogs]));
-
-    ws.on(LogEvents.NEW_LOG, serverLogs => setLogs([...serverLogs]));
-
-    ws.emit(LogEvents.GET_ALL_LOGS);
-
-    setSocketClient(ws);
+      ws.on(LogEvents.GET_ALL_LOGS, serverLogs => setLogs([...serverLogs]));
+      ws.on(LogEvents.SEARCH_LOGS, serverLogs => setLogs([...serverLogs]));
+  
+      ws.on(LogEvents.NEW_LOG, serverLogs => setLogs([...serverLogs]));
+  
+      ws.emit(LogEvents.GET_ALL_LOGS);
+  
+      setSocketClient(ws);
+    });
   }, [wsClient]);
 
   const renderCard = (_index, log) => {
