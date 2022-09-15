@@ -1,4 +1,4 @@
-import { Server } from 'Socket.IO';
+import { Server } from 'socket.io';
 const LogEvents = require('../../lib/constants/LogEvents');
 
 const SocketHandler = (req, res) => {
